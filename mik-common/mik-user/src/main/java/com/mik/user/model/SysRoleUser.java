@@ -3,6 +3,7 @@ package com.mik.user.model;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.*;
+import lombok.experimental.Accessors;
 
 /**
  * @author zlt
@@ -10,6 +11,7 @@ import lombok.*;
  */
 @Setter
 @Getter
+@Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)

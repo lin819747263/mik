@@ -17,6 +17,7 @@
         <module>mik-cache</module>
         <module>mik-log-starter</module>
         <module>mik-user</module>
+        <module>mik-notify</module>
     </modules>
 
     <modelVersion>4.0.0</modelVersion>

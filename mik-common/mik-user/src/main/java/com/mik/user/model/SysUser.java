@@ -1,18 +1,14 @@
 package com.mik.user.model;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.mik.db.model.BaseEntity;
+import com.mik.db.model.BaseDelEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("sys_user")
-public class SysUser extends BaseEntity<SysRole> {
+public class SysUser extends BaseDelEntity<SysRole> {
     private static final long serialVersionUID = -5886012896705137070L;
 
     private String username;
@@ -24,16 +20,4 @@ public class SysUser extends BaseEntity<SysRole> {
     private Boolean enabled;
     private String type;
     private String openId;
-    @TableLogic
-    private boolean isDel;
-
-    @TableField(exist = false)
-    private List<SysRole> roles;
-    @TableField(exist = false)
-    private String roleId;
-    @TableField(exist = false)
-    private String oldPassword;
-    @TableField(exist = false)
-    private String newPassword;
-
 }

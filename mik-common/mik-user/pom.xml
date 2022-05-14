@@ -27,6 +27,11 @@
             <artifactId>mik-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.mik</groupId>
+            <artifactId>mik-mvc</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>
