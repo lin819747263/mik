@@ -53,6 +53,7 @@ public class SysUserController {
 
     @GetMapping("/getUserById")
     public CommonResult<UserOutput> getUserById(Long id) {
+        sysUserService.getUserById(id);
         return CommonResult.success(sysUserService.getUserById(id));
     }
 

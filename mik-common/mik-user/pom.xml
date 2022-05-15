@@ -29,6 +29,11 @@
         </dependency>
         <dependency>
             <groupId>com.mik</groupId>
+            <artifactId>mik-swagger-starter</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mik</groupId>
             <artifactId>mik-mvc</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

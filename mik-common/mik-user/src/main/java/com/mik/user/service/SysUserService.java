@@ -47,15 +47,21 @@ public class SysUserService {
     }
 
     public UserOutput getUserById(Long id) {
-        SysUser user = sysUserMapper.selectById(id);
-        UserOutput output = new UserOutput();
-        BeanUtil.copyProperties(user, output);
-        return output;
+        return SysUserConvert.INSTANCE.convert(sysUserMapper.selectById(id));
     }
 
     public void resetPwd(Long id, String oldPwd, String newPwd) {
         SysUser user = sysUserMapper.selectById(id);
         user.setPassword(newPwd);
         sysUserMapper.updateById(user);
+    }
+
+
+    public SysUser getByUserNameOrMobile(String principal){
+        QueryWrapper<SysUser> wrapper = new QueryWrapperX<SysUser>()
+                .eq("username", principal)
+                .or()
+                .eq("mobile", principal);
+        return sysUserMapper.selectOne(wrapper);
     }
 }

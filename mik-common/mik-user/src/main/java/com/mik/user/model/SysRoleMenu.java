@@ -1,8 +1,9 @@
 package com.mik.user.model;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.mik.db.model.BaseEntity;
 import lombok.*;
+import lombok.experimental.Accessors;
 
 /**
  * @author zlt
@@ -10,11 +11,12 @@ import lombok.*;
  */
 @Setter
 @Getter
+@Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @TableName("sys_role_menu")
-public class SysRoleMenu extends Model<SysRoleMenu> {
+public class SysRoleMenu extends BaseEntity<SysRoleMenu> {
 	private Long roleId;
 	private Long menuId;
 }

@@ -19,7 +19,8 @@ mik是基于Springboot快速搭建单体应用的脚手架
 | ---- | 
 |springboot  |  
 |redis   |    
-|mybatis-plus |   
+|mybatis-plus |  
+|mapstruct|
 |swagger|
 |操作日志模块|
 |用户模块|

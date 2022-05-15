@@ -36,4 +36,8 @@ public class SysRolesService {
         QueryWrapper<SysRole> queryWrapper = new QueryWrapperX<SysRole>().likeIfPresent("name",name);
         return SysRoleConvert.INSTANCE.convertPage(sysRoleMapper.selectPage(PageUtil.build(pageInput), queryWrapper));
     }
+
+    public RoleOutput getRole(Long id) {
+        return SysRoleConvert.INSTANCE.convert(sysRoleMapper.selectById(id));
+    }
 }

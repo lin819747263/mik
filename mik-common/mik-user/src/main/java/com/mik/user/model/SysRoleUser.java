@@ -1,7 +1,7 @@
 package com.mik.user.model;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.mik.db.model.BaseEntity;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @TableName("sys_role_user")
-public class SysRoleUser extends Model<SysRoleUser> {
+public class SysRoleUser extends BaseEntity<SysRoleUser> {
 	private Long userId;
 	private Long roleId;
 }

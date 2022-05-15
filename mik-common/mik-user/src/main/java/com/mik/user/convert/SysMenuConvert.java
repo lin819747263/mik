@@ -9,6 +9,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface SysMenuConvert {
     SysMenuConvert INSTANCE = Mappers.getMapper(SysMenuConvert.class);
@@ -16,6 +18,8 @@ public interface SysMenuConvert {
     SysMenu convert(MenuSaveOrUpdateInput input);
 
     MenuOutput convert(SysMenu input);
+
+    List<MenuOutput> convert(List<SysMenu> input);
 
     @Mapping(source = "records", target = "data")
     PageResult<MenuOutput> convertPage(IPage<SysMenu> page);
