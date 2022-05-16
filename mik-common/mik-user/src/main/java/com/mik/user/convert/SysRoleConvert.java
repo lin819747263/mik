@@ -9,6 +9,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface SysRoleConvert {
     SysRoleConvert INSTANCE = Mappers.getMapper(SysRoleConvert.class);
@@ -16,6 +18,8 @@ public interface SysRoleConvert {
     SysRole convert(RoleSaveOrUpdateInput input);
 
     RoleOutput convert(SysRole input);
+
+    List<RoleOutput> convert(List<SysRole> input);
 
     @Mapping(source = "records", target = "data")
     PageResult<RoleOutput> convertPage(IPage<SysRole> page);

@@ -3,6 +3,7 @@ package com.mik.user.controller;
 import com.mik.core.model.CommonResult;
 import com.mik.core.model.PageInput;
 import com.mik.core.model.PageResult;
+import com.mik.user.dto.RoleOutput;
 import com.mik.user.dto.UserListInput;
 import com.mik.user.dto.UserOutput;
 import com.mik.user.dto.UserSaveOrUpdateInput;
@@ -11,6 +12,7 @@ import com.mik.user.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -53,8 +55,12 @@ public class SysUserController {
 
     @GetMapping("/getUserById")
     public CommonResult<UserOutput> getUserById(Long id) {
-        sysUserService.getUserById(id);
         return CommonResult.success(sysUserService.getUserById(id));
+    }
+
+    @PostMapping("/findUserRoles")
+    public CommonResult<List<RoleOutput>> findUserRoles(Long userId){
+        return CommonResult.success(sysUserService.findUserRoles(userId));
     }
 
 }

@@ -6,20 +6,28 @@ import com.mik.core.PageUtil;
 import com.mik.core.model.PageInput;
 import com.mik.core.model.PageResult;
 import com.mik.db.query.QueryWrapperX;
+import com.mik.user.convert.SysRoleConvert;
 import com.mik.user.convert.SysUserConvert;
+import com.mik.user.dto.RoleOutput;
 import com.mik.user.dto.UserListInput;
 import com.mik.user.dto.UserOutput;
 import com.mik.user.dto.UserSaveOrUpdateInput;
 import com.mik.user.mapper.SysUserMapper;
+import com.mik.user.mapper.SysUserRoleMapper;
 import com.mik.user.model.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SysUserService {
 
     @Autowired
     SysUserMapper sysUserMapper;
+
+    @Autowired
+    SysUserRoleMapper sysUserRoleMapper;
 
     public void saveOrUpdateUser(UserSaveOrUpdateInput input) {
         SysUser sysUser = new SysUser();
@@ -63,5 +71,9 @@ public class SysUserService {
                 .or()
                 .eq("mobile", principal);
         return sysUserMapper.selectOne(wrapper);
+    }
+
+    public List<RoleOutput> findUserRoles(Long userId){
+        return SysRoleConvert.INSTANCE.convert(sysUserRoleMapper.findUserRoles(userId));
     }
 }
