@@ -2,6 +2,8 @@ package com.mik.security.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mik.cache.template.RedisRepository;
+import com.mik.core.JwtUtil;
+import com.mik.core.constant.CommonConstant;
 import com.mik.core.model.CommonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +30,9 @@ public class SuccessHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         log.info("登录成功");
         UserDetails user = (UserDetails)authentication.getPrincipal();
-//        String token = JwtUtil.generateToken(user.getUsername());
+        String token = JwtUtil.generateToken(user.getUsername());
 
-//        response.setHeader(CommonConstant.TOKEN_HEADER, token);
+        response.setHeader(CommonConstant.TOKEN_HEADER, token);
         response.setContentType("application/json;charset=UTF-8");
         response.getWriter().write(objectMapper.writeValueAsString(CommonResult.success(authentication.getPrincipal())));
     }
