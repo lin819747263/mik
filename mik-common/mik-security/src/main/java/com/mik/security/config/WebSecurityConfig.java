@@ -71,7 +71,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout().permitAll()
                 .and()
-                .addFilterBefore(new SmsCodeAuthFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new SmsCodeAuthFilter(authenticationManager(), successHandler, failedHandler), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(new JWTAuthenticationFilter(authenticationManager()), SmsCodeAuthFilter.class);
     }
 

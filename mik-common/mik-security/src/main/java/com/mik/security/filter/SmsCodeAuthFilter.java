@@ -5,6 +5,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.servlet.ServletException;
@@ -20,9 +22,11 @@ public class SmsCodeAuthFilter extends AbstractAuthenticationProcessingFilter {
 
 
 //    @Autowired
-    public SmsCodeAuthFilter(AuthenticationManager authenticationManager) {
+    public SmsCodeAuthFilter(AuthenticationManager authenticationManager, AuthenticationSuccessHandler successHandler, AuthenticationFailureHandler failureHandler) {
         super(new AntPathRequestMatcher("/sms/login", "POST"));
-        setAuthenticationManager(authenticationManager);
+        super.setAuthenticationManager(authenticationManager);
+        setAuthenticationSuccessHandler(successHandler);
+        setAuthenticationFailureHandler(failureHandler);
     }
 
     @Override
@@ -37,5 +41,10 @@ public class SmsCodeAuthFilter extends AbstractAuthenticationProcessingFilter {
         authRequest.setDetails(authenticationDetailsSource.buildDetails(request));
 
         return this.getAuthenticationManager().authenticate(authRequest);
+    }
+
+    @Override
+    public void setAuthenticationSuccessHandler(AuthenticationSuccessHandler successHandler) {
+        super.setAuthenticationSuccessHandler(successHandler);
     }
 }
