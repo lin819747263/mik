@@ -23,7 +23,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    public static final String[] AUTH_WHITELIST = new String[]{"/login"};
+    public static final String[] AUTH_WHITELIST = new String[]{"/login", "/sms/login"};
     @Autowired
     SuccessHandler successHandler;
 
@@ -72,7 +72,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().permitAll()
                 .and()
                 .addFilterBefore(new SmsCodeAuthFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
-                .addFilterAfter(new JWTAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(new JWTAuthenticationFilter(authenticationManager()), SmsCodeAuthFilter.class);
     }
 
     @Override
