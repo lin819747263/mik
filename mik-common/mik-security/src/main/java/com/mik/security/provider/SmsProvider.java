@@ -4,6 +4,7 @@ import com.mik.security.service.UserService;
 import com.mik.security.token.SmsToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,6 +20,10 @@ public class SmsProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         SmsToken smsCodeAuthenticationToken = (SmsToken) authentication;
         UserDetails user = userService.loadUserByUsername((String)smsCodeAuthenticationToken.getPrincipal());
+
+        if(!"123456".equals(smsCodeAuthenticationToken.getCredentials().toString())){
+            throw new AuthenticationServiceException("验证码不正确或者已过期");
+        }
 
         SmsToken authenticationResult = new SmsToken(user,user.getAuthorities());
         authenticationResult.setDetails(smsCodeAuthenticationToken.getDetails());

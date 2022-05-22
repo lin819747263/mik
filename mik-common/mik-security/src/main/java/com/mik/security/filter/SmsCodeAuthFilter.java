@@ -31,12 +31,17 @@ public class SmsCodeAuthFilter extends AbstractAuthenticationProcessingFilter {
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
-        String mobile = request.getParameter("mobile");
+        String mobile = request.getParameter(SPRING_SECURITY_FORM_MOBILE);
+        String code = request.getParameter(SPRING_SECURITY_FORM_CODE);
 
-        if(mobile == null)
+        if(mobile == null){
             mobile = "";
+        }
+        if(code == null){
+            code = "";
+        }
 
-        SmsToken authRequest = new SmsToken(mobile);
+        SmsToken authRequest = new SmsToken(mobile, code);
 
         authRequest.setDetails(authenticationDetailsSource.buildDetails(request));
 

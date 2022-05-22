@@ -8,9 +8,11 @@ import java.util.Collection;
 public class SmsToken extends AbstractAuthenticationToken {
 
     private Object principal;
+    private Object credentials;
 
-    public SmsToken(String mobile) {
+    public SmsToken(String mobile, String credentials) {
         super(null);
+        this.credentials = credentials;
         this.principal = mobile;
         setAuthenticated(false);
     }
@@ -23,7 +25,7 @@ public class SmsToken extends AbstractAuthenticationToken {
 
     @Override
     public Object getCredentials() {
-        return null;
+        return credentials;
     }
 
     @Override
