@@ -3,28 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>micro-cli</artifactId>
+        <artifactId>mik-common</artifactId>
         <groupId>com.mik</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>mik-core</module>
-        <module>mik-db</module>
-        <module>mik-mvc</module>
-        <module>mik-swagger-starter</module>
-        <module>mik-cache</module>
-        <module>mik-log-starter</module>
-        <module>mik-user</module>
-        <module>mik-notify</module>
-        <module>mik-security</module>
-        <module>mik-fs</module>
-        <module>mik-oauth2</module>
-    </modules>
-
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>mik-common</artifactId>
+
+    <artifactId>mik-oauth2</artifactId>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
