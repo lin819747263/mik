@@ -1,8 +1,9 @@
-package com.mik.core;
+package com.mik.core.util;
 
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mik.core.model.PageInput;
+import com.mik.core.model.SortingField;
 import org.springframework.util.CollectionUtils;
 
 import java.util.Collection;

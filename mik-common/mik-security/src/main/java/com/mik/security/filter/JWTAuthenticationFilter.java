@@ -1,7 +1,7 @@
 package com.mik.security.filter;
 
 import com.alibaba.fastjson.JSONObject;
-import com.mik.core.JwtUtil;
+import com.mik.core.util.JwtUtil;
 import com.mik.core.model.CommonResult;
 import com.mik.security.config.WebSecurityConfig;
 import io.jsonwebtoken.ExpiredJwtException;

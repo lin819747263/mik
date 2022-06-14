@@ -1,27 +1,19 @@
 package com.mik.core.exception;
 
-import com.mik.core.ErrorCode;
-import com.mik.core.model.CommonResult;
-
 public class ServiceException extends RuntimeException{
 
     /**
      * 业务错误码
-     *
-     * @see ServiceErrorCodeRange
      */
     private String code;
     /**
      * 错误提示
      */
-    private String message;
+    private String msg;
     /**
      * 错误明细，内部调试错误
-     *
-     * 和 {@link CommonResult#getDetailMessage()} 一致的设计
      */
     private String detailMessage;
-
     /**
      * 空构造方法，避免反序列化问题
      */
@@ -30,21 +22,17 @@ public class ServiceException extends RuntimeException{
 
     public ServiceException(String message) {
         this.code = "1";
-        this.message = message;
+        this.msg = message;
     }
 
     public ServiceException(ErrorCode errorCode) {
         this.code = errorCode.getCode();
-        this.message = errorCode.getMessage();
+        this.msg = errorCode.getMessage();
     }
 
     public ServiceException(String code, String message) {
         this.code = code;
-        this.message = message;
-    }
-
-    public String getCode() {
-        return code;
+        this.msg = message;
     }
 
     public String getDetailMessage() {
@@ -56,17 +44,21 @@ public class ServiceException extends RuntimeException{
         return this;
     }
 
+    public String getCode() {
+        return code;
+    }
+
     public ServiceException setCode(String code) {
         this.code = code;
         return this;
     }
 
     public String getMessage() {
-        return message;
+        return msg;
     }
 
-    public ServiceException setMessage(String message) {
-        this.message = message;
+    public ServiceException setMsg(String msg) {
+        this.msg = msg;
         return this;
     }
 }

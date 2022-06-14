@@ -1,4 +1,4 @@
-package com.mik.core;
+package com.mik.core.util;
 
 import io.jsonwebtoken.*;
 

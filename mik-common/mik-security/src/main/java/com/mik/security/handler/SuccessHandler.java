@@ -2,7 +2,7 @@ package com.mik.security.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mik.cache.template.RedisRepository;
-import com.mik.core.JwtUtil;
+import com.mik.core.util.JwtUtil;
 import com.mik.core.constant.CommonConstant;
 import com.mik.core.model.CommonResult;
 import lombok.extern.slf4j.Slf4j;

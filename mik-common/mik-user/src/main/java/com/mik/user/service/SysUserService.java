@@ -2,7 +2,7 @@ package com.mik.user.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.mik.core.PageUtil;
+import com.mik.core.util.PageUtil;
 import com.mik.core.model.PageInput;
 import com.mik.core.model.PageResult;
 import com.mik.db.query.QueryWrapperX;
