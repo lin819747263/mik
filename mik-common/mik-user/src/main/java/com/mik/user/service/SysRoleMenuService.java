@@ -25,6 +25,4 @@ public class SysRoleMenuService {
         }
     }
 
-    public void getRole(Long id) {
-    }
 }

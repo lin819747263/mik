@@ -7,7 +7,7 @@ import com.mik.user.dto.RoleOutput;
 import com.mik.user.dto.RoleSaveOrUpdateInput;
 import com.mik.user.service.SysRoleMenuService;
 import com.mik.user.service.SysRolesService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,13 +17,11 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("role")
+@AllArgsConstructor
 public class SysRoleController {
 
-    @Autowired
-    SysRolesService sysRolesService;
-
-    @Autowired
-    SysRoleMenuService sysRoleMenuService;
+    private SysRolesService sysRolesService;
+    private SysRoleMenuService sysRoleMenuService;
 
     @PostMapping("saveOrUpdateRole")
     public CommonResult saveOrUpdateRole(RoleSaveOrUpdateInput input){

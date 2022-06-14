@@ -9,7 +9,7 @@ import com.mik.user.dto.UserOutput;
 import com.mik.user.dto.UserSaveOrUpdateInput;
 import com.mik.user.service.SysRoleUserService;
 import com.mik.user.service.SysUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,14 +17,13 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("user")
+@AllArgsConstructor
 public class SysUserController {
 
-    @Autowired
     private SysUserService sysUserService;
-    @Autowired
     private SysRoleUserService sysRoleUserService;
 
-    @PostMapping("/saveOrUpdateUser")
+    @PostMapping("saveOrUpdateUser")
     public CommonResult saveOrUpdate(@RequestBody UserSaveOrUpdateInput sysUser) throws Exception {
         sysUserService.saveOrUpdateUser(sysUser);
         return CommonResult.success();
@@ -36,7 +35,7 @@ public class SysUserController {
         return CommonResult.success();
     }
 
-    @PostMapping("/listUserPage")
+    @PostMapping("listUserPage")
     public CommonResult<PageResult<UserOutput>> listUserPage(UserListInput input, PageInput pageInput) {
         return CommonResult.success(sysUserService.listUserPage(input, pageInput));
     }
@@ -53,12 +52,12 @@ public class SysUserController {
         return CommonResult.success();
     }
 
-    @GetMapping("/getUserById")
+    @GetMapping("getUserById")
     public CommonResult<UserOutput> getUserById(Long id) {
         return CommonResult.success(sysUserService.getUserById(id));
     }
 
-    @PostMapping("/findUserRoles")
+    @PostMapping("findUserRoles")
     public CommonResult<List<RoleOutput>> findUserRoles(Long userId){
         return CommonResult.success(sysUserService.findUserRoles(userId));
     }
