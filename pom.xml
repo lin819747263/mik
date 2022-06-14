@@ -11,7 +11,7 @@
     <modules>
         <module>mik-common</module>
         <module>mik-pom</module>
-        <module>mik-test</module>
+        <module>mik-nav</module>
     </modules>
 
     <properties>
