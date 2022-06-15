@@ -18,18 +18,21 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <spring.cloud-version>Hoxton.SR8</spring.cloud-version>
+
         <spring.boot-version>2.3.1.RELEASE</spring.boot-version>
+        <spring.cloud-version>Hoxton.SR8</spring.cloud-version>
+        <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.version>
+
         <hutool.version>5.1.4</hutool.version>
+        <fastjson-version>1.2.56</fastjson-version>
+        <org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
+
         <redisson-starter.version>3.11.5</redisson-starter.version>
         <rocketmq-spring-boot-starter.version>2.1.0</rocketmq-spring-boot-starter.version>
         <druid-starter>1.1.22</druid-starter>
         <spring-boot-admin.version>2.1.6</spring-boot-admin.version>
         <spring-social-security.version>1.1.6.RELEASE</spring-social-security.version>
         <mybatis-plus-boot-starter.version>3.3.1</mybatis-plus-boot-starter.version>
-        <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.version>
-        <fastjson-version>1.2.56</fastjson-version>
-        <org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
     </properties>
 
     <dependencyManagement>
