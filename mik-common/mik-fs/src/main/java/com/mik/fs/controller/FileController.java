@@ -22,14 +22,14 @@ public class FileController {
     public String uploadFile(MultipartFile file, Boolean rename) {
         if(file == null || file.getOriginalFilename() == null
                 || !file.getOriginalFilename().contains(".")){
-            throw new ServiceException("文件或者文件名称不能为空");
+            throw new ServiceException("1","文件或者文件名称不能为空");
         }
         try {
             String fileName = fileService.upload(file, rename);
             return fileService.resolveUrl(fileName);
         }catch (Exception e){
             logger.warn("文件上传失败", e);
-            throw new ServiceException("文件上传失败");
+            throw new ServiceException("1", "文件上传失败");
         }
     }
 

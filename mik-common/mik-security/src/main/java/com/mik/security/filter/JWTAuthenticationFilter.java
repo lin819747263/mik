@@ -2,7 +2,7 @@ package com.mik.security.filter;
 
 import com.alibaba.fastjson.JSONObject;
 import com.mik.core.util.JwtUtil;
-import com.mik.core.model.CommonResult;
+import com.mik.core.model.Result;
 import com.mik.security.config.WebSecurityConfig;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
@@ -43,7 +43,7 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
             json.put("codeCheck", false);
             json.put("msg", "Token为空");
             response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(JSONObject.toJSONString(CommonResult.fail("1", json.toJSONString())));
+            response.getWriter().write(JSONObject.toJSONString(Result.fail("1", json.toJSONString())));
             return;
         }
         try {
@@ -57,42 +57,42 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
             json.put("codeCheck", false);
             json.put("msg", "Token已过期");
             response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(JSONObject.toJSONString(CommonResult.fail("1", json.toJSONString())));
+            response.getWriter().write(JSONObject.toJSONString(Result.fail("1", json.toJSONString())));
             logger.error("Token已过期: {} " + e);
         } catch (UnsupportedJwtException e) {
             //json.put("status", "-3");
             json.put("codeCheck", false);
             json.put("msg", "Token格式错误");
             response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(JSONObject.toJSONString(CommonResult.fail("1", json.toJSONString())));
+            response.getWriter().write(JSONObject.toJSONString(Result.fail("1", json.toJSONString())));
             logger.error("Token格式错误: {} " + e);
         } catch (MalformedJwtException e) {
             //json.put("status", "-4");
             json.put("codeCheck", false);
             json.put("msg", "Token没有被正确构造");
             response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(JSONObject.toJSONString(CommonResult.fail("1", json.toJSONString())));
+            response.getWriter().write(JSONObject.toJSONString(Result.fail("1", json.toJSONString())));
             logger.error("Token没有被正确构造: {} " + e);
         } catch (SignatureException e) {
             //json.put("status", "-5");
             json.put("codeCheck", false);
             json.put("msg", "Token签名失败");
             response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(JSONObject.toJSONString(CommonResult.fail("1", json.toJSONString())));
+            response.getWriter().write(JSONObject.toJSONString(Result.fail("1", json.toJSONString())));
             logger.error("签名失败: {} " + e);
         } catch (IllegalArgumentException e) {
             //json.put("status", "-6");
             json.put("codeCheck", false);
             json.put("msg", "Token非法参数异常");
             response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(JSONObject.toJSONString(CommonResult.fail("1", json.toJSONString())));
+            response.getWriter().write(JSONObject.toJSONString(Result.fail("1", json.toJSONString())));
             logger.error("非法参数异常: {} " + e);
         }catch (Exception e){
             //json.put("status", "-9");
             json.put("codeCheck", false);
             json.put("msg", "Invalid Token");
             response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(JSONObject.toJSONString(CommonResult.fail("1", json.toJSONString())));
+            response.getWriter().write(JSONObject.toJSONString(Result.fail("1", json.toJSONString())));
             logger.error("Invalid Token " + e.getMessage());
         }
     }

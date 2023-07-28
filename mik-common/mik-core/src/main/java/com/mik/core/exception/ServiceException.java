@@ -17,12 +17,7 @@ public class ServiceException extends RuntimeException{
     /**
      * 空构造方法，避免反序列化问题
      */
-    public ServiceException() {
-    }
-
-    public ServiceException(String message) {
-        this.code = "1";
-        this.msg = message;
+    private ServiceException() {
     }
 
     public ServiceException(ErrorCode errorCode) {
@@ -48,17 +43,7 @@ public class ServiceException extends RuntimeException{
         return code;
     }
 
-    public ServiceException setCode(String code) {
-        this.code = code;
-        return this;
-    }
-
     public String getMessage() {
         return msg;
-    }
-
-    public ServiceException setMsg(String msg) {
-        this.msg = msg;
-        return this;
     }
 }

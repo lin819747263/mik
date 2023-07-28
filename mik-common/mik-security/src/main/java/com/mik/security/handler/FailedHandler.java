@@ -1,7 +1,7 @@
 package com.mik.security.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mik.core.model.CommonResult;
+import com.mik.core.model.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +27,6 @@ public class FailedHandler implements AuthenticationFailureHandler {
 
         response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(objectMapper.writeValueAsString(CommonResult.fail("1", e.getMessage())));
+        response.getWriter().write(objectMapper.writeValueAsString(Result.fail("1", e.getMessage())));
     }
 }

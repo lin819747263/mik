@@ -1,6 +1,6 @@
 package com.mik.user.controller;
 
-import com.mik.core.model.CommonResult;
+import com.mik.core.model.Result;
 import com.mik.core.model.PageInput;
 import com.mik.core.model.PageResult;
 import com.mik.user.dto.RoleOutput;
@@ -24,29 +24,29 @@ public class SysRoleController {
     private SysRoleMenuService sysRoleMenuService;
 
     @PostMapping("saveOrUpdateRole")
-    public CommonResult saveOrUpdateRole(RoleSaveOrUpdateInput input){
+    public Result saveOrUpdateRole(RoleSaveOrUpdateInput input){
         sysRolesService.saveOrUpdateRole(input);
-        return CommonResult.success();
+        return Result.success();
     }
     @PostMapping("listRolePage")
-    public CommonResult<PageResult<RoleOutput>> listRolePage(String name, PageInput pageInput){
-        return CommonResult.success(sysRolesService.listRolePage(name, pageInput));
+    public Result<PageResult<RoleOutput>> listRolePage(String name, PageInput pageInput){
+        return Result.success(sysRolesService.listRolePage(name, pageInput));
     }
     @PostMapping("delRole")
-    public CommonResult delRole(Long id){
+    public Result delRole(Long id){
         sysRolesService.delRole(id);
-        return CommonResult.success();
+        return Result.success();
     }
 
     @PostMapping("setMenus")
-    public CommonResult setMenus(Long id, @RequestParam Set<Long> menuIds){
+    public Result setMenus(Long id, @RequestParam Set<Long> menuIds){
         sysRoleMenuService.setMenus(id, menuIds);
-        return CommonResult.success();
+        return Result.success();
     }
 
     @PostMapping("getRole")
-    public CommonResult<RoleOutput> getRole(Long id){
-        return CommonResult.success(sysRolesService.getRole(id));
+    public Result<RoleOutput> getRole(Long id){
+        return Result.success(sysRolesService.getRole(id));
     }
 
 }

@@ -1,6 +1,6 @@
 package com.mik.user.controller;
 
-import com.mik.core.model.CommonResult;
+import com.mik.core.model.Result;
 import com.mik.core.model.PageInput;
 import com.mik.core.model.PageResult;
 import com.mik.user.dto.RoleOutput;
@@ -24,42 +24,42 @@ public class SysUserController {
     private SysRoleUserService sysRoleUserService;
 
     @PostMapping("saveOrUpdateUser")
-    public CommonResult saveOrUpdate(@RequestBody UserSaveOrUpdateInput sysUser) throws Exception {
+    public Result saveOrUpdate(@RequestBody UserSaveOrUpdateInput sysUser) throws Exception {
         sysUserService.saveOrUpdateUser(sysUser);
-        return CommonResult.success();
+        return Result.success();
     }
 
     @PostMapping(value = "deleteUser")
-    public CommonResult deleteUser(Long id) {
+    public Result deleteUser(Long id) {
         sysUserService.deleteUser(id);
-        return CommonResult.success();
+        return Result.success();
     }
 
     @PostMapping("listUserPage")
-    public CommonResult<PageResult<UserOutput>> listUserPage(UserListInput input, PageInput pageInput) {
-        return CommonResult.success(sysUserService.listUserPage(input, pageInput));
+    public Result<PageResult<UserOutput>> listUserPage(UserListInput input, PageInput pageInput) {
+        return Result.success(sysUserService.listUserPage(input, pageInput));
     }
 
     @PostMapping(value = "resetPwd")
-    public CommonResult resetPwd(Long id, String oldPwd, String newPwd) {
+    public Result resetPwd(Long id, String oldPwd, String newPwd) {
         sysUserService.resetPwd(id, oldPwd, newPwd);
-        return CommonResult.success();
+        return Result.success();
     }
 
     @PostMapping(value = "setRole")
-    public CommonResult setRole(Long id, @RequestParam Set<Long> roleIds) {
+    public Result setRole(Long id, @RequestParam Set<Long> roleIds) {
         sysRoleUserService.setRole(id, roleIds);
-        return CommonResult.success();
+        return Result.success();
     }
 
     @GetMapping("getUserById")
-    public CommonResult<UserOutput> getUserById(Long id) {
-        return CommonResult.success(sysUserService.getUserById(id));
+    public Result<UserOutput> getUserById(Long id) {
+        return Result.success(sysUserService.getUserById(id));
     }
 
     @PostMapping("findUserRoles")
-    public CommonResult<List<RoleOutput>> findUserRoles(Long userId){
-        return CommonResult.success(sysUserService.findUserRoles(userId));
+    public Result<List<RoleOutput>> findUserRoles(Long userId){
+        return Result.success(sysUserService.findUserRoles(userId));
     }
 
 }

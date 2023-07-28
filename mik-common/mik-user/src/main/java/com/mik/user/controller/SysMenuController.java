@@ -1,6 +1,6 @@
 package com.mik.user.controller;
 
-import com.mik.core.model.CommonResult;
+import com.mik.core.model.Result;
 import com.mik.core.model.PageInput;
 import com.mik.core.model.PageResult;
 import com.mik.user.dto.MenuListInput;
@@ -22,34 +22,34 @@ public class SysMenuController {
     private SysMenuService sysMenuService;
 
     @PostMapping("saveOrUpdateMenu")
-    public CommonResult saveOrUpdateMenu(MenuSaveOrUpdateInput input) {
+    public Result saveOrUpdateMenu(MenuSaveOrUpdateInput input) {
         sysMenuService.saveOrUpdateMenu(input);
-        return CommonResult.success();
+        return Result.success();
     }
 
     @PostMapping("listMenuPage")
-    public CommonResult<PageResult<MenuOutput>> listMenuPage(MenuListInput input, PageInput pageInput) {
-        return CommonResult.success(sysMenuService.listMenuPage(input, pageInput));
+    public Result<PageResult<MenuOutput>> listMenuPage(MenuListInput input, PageInput pageInput) {
+        return Result.success(sysMenuService.listMenuPage(input, pageInput));
     }
 
     @PostMapping("delMenu")
-    public CommonResult delMenu(Long id) {
+    public Result delMenu(Long id) {
         sysMenuService.delMenu(id);
-        return CommonResult.success();
+        return Result.success();
     }
 
     @PostMapping("getMenu")
-    public CommonResult<MenuOutput> getMenu(Long id) {
-        return CommonResult.success(sysMenuService.getMenu(id));
+    public Result<MenuOutput> getMenu(Long id) {
+        return Result.success(sysMenuService.getMenu(id));
     }
 
     @PostMapping("findAllMenu")
-    public CommonResult<List<MenuOutput>> findAllMenu() {
-        return CommonResult.success(sysMenuService.findAll());
+    public Result<List<MenuOutput>> findAllMenu() {
+        return Result.success(sysMenuService.findAll());
     }
 
     @PostMapping("findRoleMenu")
-    public CommonResult<List<MenuOutput>> findRoleMenu(Long roleId) {
-        return CommonResult.success(sysMenuService.findRoleMenu(roleId));
+    public Result<List<MenuOutput>> findRoleMenu(Long roleId) {
+        return Result.success(sysMenuService.findRoleMenu(roleId));
     }
 }

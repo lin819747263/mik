@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mik.cache.template.RedisRepository;
 import com.mik.core.util.JwtUtil;
 import com.mik.core.constant.CommonConstant;
-import com.mik.core.model.CommonResult;
+import com.mik.core.model.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -34,6 +34,6 @@ public class SuccessHandler implements AuthenticationSuccessHandler {
 
         response.setHeader(CommonConstant.TOKEN_HEADER, token);
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(objectMapper.writeValueAsString(CommonResult.success(authentication.getPrincipal())));
+        response.getWriter().write(objectMapper.writeValueAsString(Result.success(authentication.getPrincipal())));
     }
 }

@@ -2,7 +2,7 @@ package com.mik.mvc.handler;
 
 
 import com.mik.core.exception.ServiceException;
-import com.mik.core.model.CommonResult;
+import com.mik.core.model.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -11,16 +11,23 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Slf4j
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
-    public CommonResult serviceExceptionHandler(ServiceException ex) {
+    @ExceptionHandler(ServiceException.class)
+    public Result serviceExceptionHandler(ServiceException ex) {
         log.info("666", ex);
-        return CommonResult.fail(ex.getCode(), ex.getMessage());
+        return Result.fail(ex.getCode(), ex.getMessage());
+    }
+
+
+    @ExceptionHandler(Exception.class)
+    public Result exceptionHandler(Exception ex) {
+        log.info("666", ex);
+        return Result.fail("666", "未知错误，请联系管理员");
     }
 
     @ExceptionHandler(Throwable.class)
-    public CommonResult throwableHandler(Throwable throwable) {
+    public Result throwableHandler(Throwable throwable) {
         log.info("666", throwable);
-        return CommonResult.fail("1", throwable.getMessage());
+        return Result.fail("666", "未知错误，请联系管理员");
     }
 
 }
